@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# Qtile Dotfiles Configurator & Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive, premium web-based dashboard and custom configuration compiler for the **Qtile Window Manager**. This tool provides a beautiful glassmorphic graphical user interface (GUI) to customize your window tiling setups, widgets, workspaces, autostart programs, and keybindings, and instantly export production-ready configuration dotfiles.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What It Does
 
-## React Compiler
+### 1. Interactive Desktop Tiling Simulation
+- Displays dynamic, mock window arrangements (Master + Stack splits for `MonadTall`, single maximize box for `Max`, grid structures for `Columns`, floating layer overlaps for `Floating`) in real-time as you toggle window manager properties.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Live Top Status Bar Preview
+- Renders a simulated top bar panel representing widget selections (toggling Clock, CPU Load, RAM, Volume indicator, Group indicator boxes, Systray applets) aligned dynamically inside a mockup Linux screen matching the active color theme.
 
-## Expanding the ESLint configuration
+### 3. Settings Configurator
+- **Mod Modifier Switch**: Toggle between `Super (mod4)` and `Alt (mod1)` directly.
+- **Terminal selection**: Set your default desktop terminal emulator.
+- **Margins & Borders**: Interactive sliders to adjust window gaps (`margin`) and window borders (`border_width`).
+- **Autostart Services Checklist**: Check/uncheck standard Linux utilities (`picom` compositor, `feh` wallpaper restorer, `dunst` notification daemon, network managers) and add custom scripts.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 4. Interactive Keybindings Editor
+- Add custom key shortcuts, map modifiers, write custom `lazy` execution triggers, and delete bindings dynamically using a simple form.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 5. Config Exporter
+- Outputs fully formatted Python (`config.py`) and shell script (`autostart.sh`) with built-in regex-based code highlighting.
+- Download code or copy directly to clipboard with satisfying micro-animation toasts.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Themes Included
+- **Dracula** (Vibrant Purple & Pink Neon)
+- **Nord** (Cool Arctic Frost & Blue)
+- **Tokyo Night** (Deep Neon Blue & Lavender)
+- **Gruvbox** (Classic Warm Retro Yellow & Rust)
+- **One Dark** (Sleek Slate Grey & Blue)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Local Development Setup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+To run the dashboard configurator locally on your machine:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Anthropicalluv/qtile-dotfiles.git
+   cd qtile-dotfiles
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the local development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Verify TypeScript compilation and lints**:
+   ```bash
+   npm run build
+   npm run lint
+   ```
+
+---
+
+## Deploying Configs to Linux
+
+To use your generated setup:
+
+1. Create the configuration directories:
+   ```bash
+   mkdir -p ~/.config/qtile/
+   ```
+2. Move your downloaded `config.py` and `autostart.sh` files into `~/.config/qtile/`.
+3. Make the autostart shell script executable:
+   ```bash
+   chmod +x ~/.config/qtile/autostart.sh
+   ```
+4. Hot-reload Qtile config using the default keybinding: `Super + Ctrl + R`.
