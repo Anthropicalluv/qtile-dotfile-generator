@@ -11,7 +11,7 @@ An interactive, premium web-based dashboard and custom configuration compiler fo
 
 ### 2. Live Top Status Bar Preview
 - Renders a simulated top bar panel representing widget selections (toggling Clock, CPU Load, RAM, Volume indicator, Group indicator boxes, Systray applets) aligned dynamically inside a mockup Linux screen matching the active color theme.
-
+hi
 ### 3. Settings Configurator
 - **Mod Modifier Switch**: Toggle between `Super (mod4)` and `Alt (mod1)` directly.
 - **Terminal selection**: Set your default desktop terminal emulator.
